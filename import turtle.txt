@@ -1,0 +1,40 @@
+import turtle
+import time
+
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+screen.title("Welcome Animation")
+screen.bgcolor("#A7C7E7")
+
+user_name = screen.textinput("Welcome!", "Please enter your name:")
+
+with open("visitors.txt", "a") as file:
+    file.write(user_name + "\n")
+
+welcome_writer = turtle.Turtle()
+welcome_writer.hideturtle()
+welcome_writer.color("#0B3954")
+welcome_writer.penup()
+welcome_writer.goto(0, 100)
+welcome_writer.write("Welcome", align="center", font=("Arial", 40, "bold"))
+
+bless_writer = turtle.Turtle()
+bless_writer.hideturtle()
+bless_writer.color("#034078")
+bless_writer.penup()
+bless_writer.goto(0, 40)
+bless_writer.write("✨ May the universe smile upon you ✨", align="center", font=("Arial", 16, "normal"))
+
+name_writer = turtle.Turtle()
+name_writer.hideturtle()
+name_writer.color("#FF6F61")
+name_writer.penup()
+name_writer.goto(0, -50)
+
+for size in range(10, 46, 3):
+    name_writer.clear()
+    name_writer.write(user_name, align="center", font=("Courier", size, "bold"))
+    time.sleep(0.1)
+
+time.sleep(4)
+turtle.bye()
